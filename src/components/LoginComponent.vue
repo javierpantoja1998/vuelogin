@@ -55,7 +55,7 @@ import auth from '@/logics/Auth';
     methods: {
       async login() {
         try {
-          await auth.logins(this.email, this.password);
+          await auth.login(this.email, this.password);
           this.$router.push("/")
         } catch (error) {
           console.log(error);
