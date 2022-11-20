@@ -9,7 +9,7 @@ methods: {
   <template>
     <div class="register">
       <h1 class="title">Sign Up</h1>
-      <form action class="form" @submit.prevent="register">
+      <form action class="form" @submit.prevent="login">
         <label class="form-label" for="#email">Email:</label>
         <input
           v-model="email"
@@ -37,6 +37,9 @@ methods: {
         >
         <input class="form-submit" type="submit" value="Sign Up">
       </form>
+      <p class="msg">¿No tienes cuenta?
+      <router-link to="/register">Regístrate</router-link>
+    </p>
     </div>
   </template>
   
@@ -50,9 +53,9 @@ import auth from '@/logics/Auth';
       error: false
     }),
     methods: {
-      async register() {
+      async login() {
         try {
-          await auth.register(this.email, this.password);
+          await auth.logins(this.email, this.password);
           this.$router.push("/")
         } catch (error) {
           console.log(error);
